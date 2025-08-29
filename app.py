@@ -515,6 +515,14 @@ def inspect():
     return jsonify({"success": True, "data": resp}), 200
 
 
+@app.get("/")
+def root():
+    return {
+        "ok": True,
+        "service": "cm-sentinel-api",
+        "version": "1.0.0"
+    }
+
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "5001"))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=True)
